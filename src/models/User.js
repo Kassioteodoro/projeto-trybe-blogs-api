@@ -2,7 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   const table = sequelize.define('User', {
     id: { type: DataTypes.INTEGER, primaryKey: true },
-    display_name: DataTypes.STRING,
+    displayName: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING,
     image: DataTypes.STRING
