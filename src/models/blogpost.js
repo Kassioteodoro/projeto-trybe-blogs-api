@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const table = sequelize.define('blogPost', {
+  const table = sequelize.define('BlogPost', {
     id: { type: DataTypes.INTEGER, primaryKey: true },
     title: DataTypes.STRING,
     content: DataTypes.STRING,
@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
     table.associate = (models) => {
-      table.belongsTo(models.user, {
+      table.belongsTo(models.User, {
         foreignKey: "user_id",
         as: "user",
       });
