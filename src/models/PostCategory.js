@@ -1,7 +1,10 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const table = sequelize.define('PostCategory', 
-  {},
+  {
+    postId: DataTypes.INTEGER,
+    categoryId: DataTypes.INTEGER
+  },
   {
     timestamps: false,
     underscored: true,
@@ -11,13 +14,13 @@ module.exports = (sequelize, DataTypes) => {
   table.associate = (models) => {
     models.BlogPost.belongsToMany(models.Category,
       {
-        as: 'categories',
+        as: 'Category',
         through: table,
         foreignKey: 'postId',
         otherKey: 'categoryId',
       });
     models.Category.belongsToMany(models.BlogPost, {
-      as: "blogPosts",
+      as: "BlogPost",
       through: table,
       foreignKey: "categoryId",
       otherKey: "postId",
