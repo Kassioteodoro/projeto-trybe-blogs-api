@@ -24,6 +24,17 @@ const getAll = async () => {
 
 // getAll();
 
+const getById = async (id) => {
+  const user = await User.findByPk(id);
+  // console.log(user.dataValues);
+  if (!user) return false;
+  const { password, ...userWithoutPassword } = user.dataValues;
+  // console.log('aqui', userWithoutPassword);
+  return userWithoutPassword;
+};
+
+// getById(1);
+
 const postNewLogin = (email) => {
   const token = jwtFunctions.createNewToken({ email });
   return token;
@@ -51,4 +62,5 @@ module.exports = {
   postNewLogin,
   postNewUser,
   getAll,
+  getById,
 };
