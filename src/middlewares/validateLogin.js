@@ -11,7 +11,7 @@ module.exports = async (req, res, next) => {
     return res.status(400).json({ message: 'Some required fields are missing' });
   }
 
-  const user = await userServices.getByEmail(email);
+  const user = await userServices.getByEmailAndPassword(email, password);
 
   if (!user) {
     return res.status(400).json({ message: 'Invalid fields' });
