@@ -3,11 +3,11 @@ const jwtFunctions = require('../auth/jwtFunctions');
 
 const getByEmail = async (email) => {
   const user = await User.findOne({ where: { email } });
-  console.log('resultado aqi', user);
+  // console.log('resultado aqi', user);
   return user;
 };
 
-getByEmail('MichaelSchumacher@gmail.com');
+// getByEmail('MichaelSchumacher@gmail.com');
 
 const getByEmailAndPassword = async (email, password) => {
   const user = await User.findOne({ where: { email, password } });
@@ -15,6 +15,14 @@ const getByEmailAndPassword = async (email, password) => {
   return user;
 };
 // getByEmailAndPassword('MichaelSchumacher@gmail.com', '123456');
+
+const getAll = async () => {
+  const users = await User.findAll();
+  // console.log(users);
+  return users;
+};
+
+// getAll();
 
 const postNewLogin = (email) => {
   const token = jwtFunctions.createNewToken({ email });
@@ -42,4 +50,5 @@ module.exports = {
   getByEmailAndPassword,
   postNewLogin,
   postNewUser,
+  getAll,
 };
