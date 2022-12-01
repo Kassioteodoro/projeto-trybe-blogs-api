@@ -26,18 +26,17 @@ const getAll = async () => {
   return usersWithoutPassword;
 };
 
-getAll();
+// getAll();
 
 const getById = async (id) => {
   const user = await User.findByPk(id);
-  // console.log(user.dataValues);
   if (!user) return false;
   const { password, ...userWithoutPassword } = user.dataValues;
-  // console.log('aqui', userWithoutPassword);
+  console.log('mano', userWithoutPassword);
   return userWithoutPassword;
 };
 
-// getById(1);
+getById(1);
 
 const postNewLogin = (email) => {
   const token = jwtFunctions.createNewToken({ email });
