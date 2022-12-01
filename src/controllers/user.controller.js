@@ -12,6 +12,17 @@ const postNewLogin = async (req, res) => {
   }
 };
 
+const postNewUser = async (req, res) => {
+  try {
+    const { body } = req;
+    const token = await userServices.postNewLogin(body);
+    return res.status(201).json({ token });
+  } catch (e) {
+    res.status(500).json({ message: e.message });
+  }
+};
+
 module.exports = {
   postNewLogin,
+  postNewUser,
 };

@@ -1,31 +1,25 @@
 const { User } = require('../models');
 const jwtFunctions = require('../auth/jwtFunctions');
 
-// const getByEmail = async (email) => {
-  // const user = await User.findOne({ where: { email } });
-  // console.log(user);
-  // return user;
-// };
-
-// getByEmail('kassio@gemail.com');
-
-const getByEmailAndPassword = async (email, password) => {
-  const user = await User.findOne({ where: { email, password } });
-  // console.log('resultado aqui', user);
+const getByEmail = async (email) => {
+  const user = await User.findOne({ where: { email } });
+  console.log('resultado aqi', user);
   return user;
 };
 
-getByEmailAndPassword('lewishamilton@gmail.com', '123456');
+getByEmail('MichaelSchumacher@gmail.com');
+
+const getByEmailAndPassword = async (email, password) => {
+  const user = await User.findOne({ where: { email, password } });
+  // console.log(user);
+  return user;
+};
+// getByEmailAndPassword('MichaelSchumacher@gmail.com', '123456');
 
 const postNewLogin = (email) => {
-  // await User.create({ email, password });
   const token = jwtFunctions.createNewToken({ email });
-  // console.log(1, user);
-  // console.log(2, token);
   return token;
 };
-
-// postNewLogin('kassio@gemail.com', '123455');
 
 const postNewUser = async (newUser) => {
   await User.create(newUser);
@@ -44,6 +38,7 @@ const postNewUser = async (newUser) => {
 // });
 
 module.exports = {
+  getByEmail,
   getByEmailAndPassword,
   postNewLogin,
   postNewUser,
