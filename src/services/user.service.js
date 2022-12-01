@@ -18,11 +18,15 @@ const getByEmailAndPassword = async (email, password) => {
 
 const getAll = async () => {
   const users = await User.findAll();
-  // console.log(users);
-  return users;
+  const usersWithoutPassword = users.map((user) => {
+  const { password, ...userWithoutPassword } = user.dataValues;
+  return userWithoutPassword;
+  });
+  // console.log('aqui', usersWithoutPassword);
+  return usersWithoutPassword;
 };
 
-// getAll();
+getAll();
 
 const getById = async (id) => {
   const user = await User.findByPk(id);
