@@ -7,7 +7,14 @@ const getAll = async () => {
   return categories;
 };
 
-// getAll();
+// const getById = async (id) => {
+  // const result = await Category.findByPk(id);
+  // const categories = result.map((category) => category.dataValues);
+  // console.log('aqui', categories);
+  // return categories;
+// };
+
+getAll();
 
 const postNewCategory = async (name) => {
   const category = await Category.create({ name });
@@ -18,6 +25,7 @@ const postNewCategory = async (name) => {
 // postNewCategory('manga');
 
 module.exports = {
+  // getById,
   postNewCategory,
   getAll,
 };

@@ -32,11 +32,11 @@ const getById = async (id) => {
   const user = await User.findByPk(id);
   if (!user) return false;
   const { password, ...userWithoutPassword } = user.dataValues;
-  console.log('mano', userWithoutPassword);
+  // console.log('mano', userWithoutPassword);
   return userWithoutPassword;
 };
 
-getById(1);
+// getById(1);
 
 const postNewLogin = (email) => {
   const token = jwtFunctions.createNewToken({ email });
@@ -44,10 +44,12 @@ const postNewLogin = (email) => {
 };
 
 const postNewUser = async (newUser) => {
-  await User.create(newUser);
-  const { _password, ...userWithoutPassword } = newUser;
+  const user = await User.create(newUser);
+  const { dataValues, null: id } = user;
+  dataValues.id = id;
+  const { password, ...userWithoutPassword } = dataValues;
   const token = jwtFunctions.createNewToken(userWithoutPassword);
-  // console.log(1, user);
+  // console.log(1, dataValues, userWithoutPassword);
   // console.log(2, token);
   return token;
 };
