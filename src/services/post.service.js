@@ -1,5 +1,4 @@
 const Sequelize = require('sequelize');
-const { post } = require('frisby');
 const { BlogPost, PostCategory, Category, User } = require('../models');
 
 const config = require('../config/config');
