@@ -1,4 +1,4 @@
-# My Awesome Project
+# Projeto Trybe Blogs API
 
 # Contexto
 Este projeto trata-se de uma API para a produção de conteudo para um blog.
